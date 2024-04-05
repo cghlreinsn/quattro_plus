@@ -19,6 +19,7 @@ namespace qp {
         inline double getImag_i() {return m_imag_i}
         inline double getImag_j() {return m_imag_j}
         inline double getImag_k() {return m_imag_k}
+        void normalize();
         quaternion conjugate();
         double magnitude();
         double norm();
@@ -36,6 +37,10 @@ namespace qp {
         quaternion operator*(const double& rs);
         quaternion operator*(const float& rs);
         quaternion operator*(const int& rs);
+        quaternion operator/(const quaternion& rs);
+        quaternion operator/(const double& rs);
+        quaternion operator/(const float& rs);
+        quaternion operator/(const int& rs);
         quaternion operator-(*this);
         
     };
