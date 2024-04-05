@@ -8,6 +8,9 @@ namespace qp {
     quaternion quaternion::conjugate() {
         return quaternion(m_real, -m_imag_i, -m_imag_j, -m_imag_k);
     }
+    double quaternion::magnitude() {
+        return std::sqrt((m_real*m_real) + (m_imag_i*m_imag_i) + (m_imag_j*m_imag_j) + (m_imag_k*m_imag_k));
+    }
     quaternion quaternion::operator+(const quaternion& rs) {
         return quaternion(m_real+rs.getReal(), m_imag_i+rs.getImag_i(), m_imag_j+rs.getImag_j(), m_imag_k+rs.getImag_k());
     }
@@ -52,4 +55,8 @@ namespace qp {
     quaternion quaternion::operator*(const int& rs) {
     return (*this)*((double) rs);
     }
+    double abs(const quaternion& rs) {
+        return rs.magnitude();
+    }
+    
 }
