@@ -13,15 +13,15 @@ namespace qp {
         quaternion(double realin);
         quaternion(double realin,double ipartin,double jpartin,double kpartin);
         ~quaternion();
-        double getReal();
-        double getImag_i;
-        double getImag_j;
-        double getImag_k;
-        quaternion(const quaternion&);
-        operator=();
-        operator==();
-        operator+();
-        operator*();
+        inline double getReal() {return m_real}
+        inline double getImag_i() {return m_imag_i}
+        inline double getImag_j() {return m_imag_j}
+        inline double getImag_k() {return m_imag_k}
+        quaternion operator=(const quaternion& rs);
+        bool operator==(const quaternion& rs);
+        quaternion operator+(const quaternion& rs);
+        quaternion operator*(const quaternion& rs);
+        
     };
 }
 
