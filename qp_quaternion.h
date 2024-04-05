@@ -38,7 +38,7 @@ namespace qp {
         quaternion operator-(*this);
         
     };
-    double abs(const quaternion&);
+    double abs(const quaternion& rs);
 }
 
 #endif
