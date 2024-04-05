@@ -1,6 +1,8 @@
 #ifndef QP_QUATERNION_H
 #define QP_QUATERNION_H
 
+#include <cmath>
+
 namespace qp {
     class quaternion {
     private:
@@ -18,6 +20,7 @@ namespace qp {
         inline double getImag_j() {return m_imag_j}
         inline double getImag_k() {return m_imag_k}
         quaternion conjugate();
+        double magnitude();
         quaternion operator=(const quaternion& rs);
         bool operator==(const quaternion& rs);
         quaternion operator+(const quaternion& rs);
@@ -35,6 +38,7 @@ namespace qp {
         quaternion operator-(*this);
         
     };
+    double abs(const quaternion&);
 }
 
 #endif
