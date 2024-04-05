@@ -68,7 +68,7 @@ namespace qp {
     return (*this)*(rs.conjugate()/(rs.getNorm());
     }
     quaternion quaternion::operator/(const double& rs) {
-        return quaternion();
+        return quaternion(m_real/rs, m_imag_i/rs, m_imag_j/rs, m_imag_k/rs);
     }
     double abs(const quaternion& rs) {
         return rs.magnitude();
