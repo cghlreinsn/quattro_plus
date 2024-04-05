@@ -10,6 +10,7 @@ namespace qp {
         double m_imag_i;
         double m_imag_j;
         double m_imag_k;
+        double magnitude;
     public:
         quaternion();
         quaternion(double realin);
@@ -19,10 +20,9 @@ namespace qp {
         inline double getImag_i() {return m_imag_i}
         inline double getImag_j() {return m_imag_j}
         inline double getImag_k() {return m_imag_k}
-        void normalize();
+        quaternion normalized;
         quaternion conjugate();
-        double magnitude();
-        double norm();
+        double getNorm();
         quaternion operator=(const quaternion& rs);
         bool operator==(const quaternion& rs);
         quaternion operator+(const quaternion& rs);
