@@ -1,3 +1,4 @@
+#include <iostream>
 #include "qp_quaternion.h"
 
 namespace qp {
@@ -69,6 +70,7 @@ namespace qp {
             return (*this)*(rs.conjugate()/(rs.getNorm());
         }
         else {
+            std::cout << "Division by 0 attempted.\n";
             return std::nan('');
         }
     }
@@ -77,6 +79,7 @@ namespace qp {
             return quaternion(m_real/rs, m_imag_i/rs, m_imag_j/rs, m_imag_k/rs);
         }
         else {
+            std::cout << "Division by zero attempted.\n";
             return std::nan('');
         }
     }
