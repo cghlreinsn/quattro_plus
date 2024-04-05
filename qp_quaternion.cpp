@@ -65,10 +65,14 @@ namespace qp {
         return (*this)*((double) rs);
     }
     quaternion quaternion::operator/(const quaternion& rs) {
-        return (*this)*(rs.conjugate()/(rs.getNorm());
+        if (rs.getNorm() != 0.0) {
+            return (*this)*(rs.conjugate()/(rs.getNorm());
+        }
     }
     quaternion quaternion::operator/(const double& rs) {
-        return quaternion(m_real/rs, m_imag_i/rs, m_imag_j/rs, m_imag_k/rs);
+        if (rs != 0.0) {
+            return quaternion(m_real/rs, m_imag_i/rs, m_imag_j/rs, m_imag_k/rs);
+        }
     }
     double abs(const quaternion& rs) {
         return rs.magnitude();
