@@ -43,4 +43,13 @@ namespace qp {
 
         return quaternion(new_real, new_i, new_j, new_k);
     }
+    quaternion quaternion::operator*(const double& rs) {
+        return quaternion(rs*m_real, rs*m_imag_i, rs*m_imag_j, rs*m_imag_k);
+    }
+    quaternion quaternion::operator*(const float& rs) {
+    return (*this)*((double) rs);
+    }
+    quaternion quaternion::operator*(const int& rs) {
+    return (*this)*((double) rs);
+    }
 }
