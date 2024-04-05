@@ -29,4 +29,7 @@ namespace qp {
     quaternion quaternion::operator-(const int& rs) {
         return (*this)-((double) rs));
     }
+    quaternion quaternion::operator-(*this) {
+        return quaternion(-m_real, -m_imag_i, -m_imag_j, -m_imag_k);
+    }
 }
