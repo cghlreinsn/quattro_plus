@@ -28,6 +28,7 @@ namespace qp {
         quaternion operator-(const float& rs);
         quaternion operator-(const int& rs);
         quaternion operator*(const quaternion& rs);
+        quaternion operator-(*this);
         
     };
 }
