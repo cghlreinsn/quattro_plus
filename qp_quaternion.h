@@ -20,7 +20,7 @@ namespace qp {
         inline double getImag_i() {return m_imag_i}
         inline double getImag_j() {return m_imag_j}
         inline double getImag_k() {return m_imag_k}
-        quaternion normalized;
+        quaternion normalized();
         quaternion conjugate();
         double getNorm();
         quaternion operator=(const quaternion& rs);
