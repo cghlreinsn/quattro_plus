@@ -68,10 +68,16 @@ namespace qp {
         if (rs.getNorm() != 0.0) {
             return (*this)*(rs.conjugate()/(rs.getNorm());
         }
+        else {
+            return std::nan('');
+        }
     }
     quaternion quaternion::operator/(const double& rs) {
         if (rs != 0.0) {
             return quaternion(m_real/rs, m_imag_i/rs, m_imag_j/rs, m_imag_k/rs);
+        }
+        else {
+            return std::nan('');
         }
     }
     double abs(const quaternion& rs) {
