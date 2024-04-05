@@ -21,6 +21,7 @@ namespace qp {
         inline double getImag_k() {return m_imag_k}
         quaternion conjugate();
         double magnitude();
+        double norm();
         quaternion operator=(const quaternion& rs);
         bool operator==(const quaternion& rs);
         quaternion operator+(const quaternion& rs);
