@@ -84,7 +84,7 @@ namespace qp {
         }
     }
     double abs(const quaternion& rs) {
-        return rs.magnitude();
+        return rs.getNorm();
     }
     
 }
