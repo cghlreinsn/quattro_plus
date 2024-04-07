@@ -2,10 +2,10 @@
 
 void test_it(const bool& testresult, std::string fname) {
     if (testresult) {
-        std::cout << "pass: ";
+        std::cout << "    pass: ";
     }
     else {
-        std::cout << "FAIL: ";
+        std::cout << "x   FAIL: ";
     }
     std::cout << fname << " test.\n";
 }
@@ -48,10 +48,10 @@ bool test_constructor_full() {
 
 bool test_normalized() {
     qp::quaternion testcase = qObj.normalized();
-    return ((testcase.getReal() == 0.5) &&
-            (testcase.getImag_i() == 0.5) &&
-            (testcase.getImag_j() == 0.5) &&
-            (testcase.getImag_k() == 0.5) &&
+    return ((testcase.getReal() == qObj.getReal() / qObj.getNorm()) &&
+            (testcase.getImag_i() == qObj.getImag_i() / qObj.getNorm()) &&
+            (testcase.getImag_j() == qObj.getImag_j() / qObj.getNorm()) &&
+            (testcase.getImag_k() == qObj.getImag_k() / qObj.getNorm()) &&
             (testcase.getNorm() == 1));
 }
 
@@ -61,6 +61,19 @@ bool test_conjugate() {
             (testcase.getImag_i() == -(qObj.getImag_i())) &&
             (testcase.getImag_j() == -(qObj.getImag_j())) &&
             (testcase.getImag_k() == -(qObj.getImag_k())));
+}
+
+bool test_inverse() {
+    qp::quaternion testcase = qObj.inverse();
+    return ((testcase.getReal() == (qObj.getReal() / qObj.getsqrNorm())) &&
+            (testcase.getImag_i() == (-(qObj.getImag_i()) / qObj.getsqrNorm())) &&
+            (testcase.getImag_j() == (-(qObj.getImag_j()) / qObj.getsqrNorm())) &&
+            (testcase.getImag_k() == (-(qObj.getImag_k()) / qObj.getsqrNorm())));
+}
+
+bool test_inverse_by_1() {
+    qp::quaternion testcase = qObj*(qObj.inverse());
+    return testcase == qp::quaternion(1,0,0,0);
 }
 
 bool test_equals() {
@@ -207,4 +220,81 @@ bool test_times_int() {
         (testcase.getImag_i() == qObj.getImag_i()*num) &&
         (testcase.getImag_j() == qObj.getImag_j()*num) &&
         (testcase.getImag_k() == qObj.getImag_k()*num));
+}
+
+bool test_div_q() {
+    qp::quaternion testcase = qp::quaternion(2,4,8,4);
+    qp::quaternion prod = testcase*qObj.conjugate();
+    qp::quaternion testquot = testcase / qObj;
+    return ((testquot.getReal()   == (prod/(qObj.getsqrNorm())).getReal()) &&
+            (testquot.getImag_i() == (prod/(qObj.getsqrNorm())).getImag_i()) &&
+            (testquot.getImag_j() == (prod/(qObj.getsqrNorm())).getImag_j()) &&
+            (testquot.getImag_k() == (prod/(qObj.getsqrNorm())).getImag_k()));
+}
+
+bool test_div_q0() {
+    double Nan = std::nan("inf");
+    qp::quaternion testcase = qObj / qp::quaternion();
+    return ((std::isnan(testcase.getReal()))   &&
+            (std::isnan(testcase.getImag_i())) &&
+            (std::isnan(testcase.getImag_j())) &&
+            (std::isnan(testcase.getImag_k())));
+}
+
+bool test_div_d() {
+    double num = 1.3;
+    qp::quaternion testcase = qObj / num;
+    return ((testcase.getReal() == (qObj.getReal())/num) &&
+            (testcase.getImag_i() == (qObj.getImag_i())/num) &&
+            (testcase.getImag_j() == (qObj.getImag_j())/num) &&
+            (testcase.getImag_k() == (qObj.getImag_k())/num));
+}
+
+bool test_div_d0() {
+    double Nan = std::nan("inf");
+    qp::quaternion testcase = qObj / 0.0;
+    return ((std::isnan(testcase.getReal()))   &&
+            (std::isnan(testcase.getImag_i())) &&
+            (std::isnan(testcase.getImag_j())) &&
+            (std::isnan(testcase.getImag_k())));
+}
+
+bool test_div_f() {
+    float num = 3.2f;
+    qp::quaternion testcase = qObj / num;
+    return ((testcase.getReal() == (qObj.getReal())/num) &&
+            (testcase.getImag_i() == (qObj.getImag_i())/num) &&
+            (testcase.getImag_j() == (qObj.getImag_j())/num) &&
+            (testcase.getImag_k() == (qObj.getImag_k())/num));
+}
+
+bool test_div_f0() {
+    double Nan = std::nan("inf");
+    qp::quaternion testcase = qObj / 0.0f;
+    return ((std::isnan(testcase.getReal()))   &&
+            (std::isnan(testcase.getImag_i())) &&
+            (std::isnan(testcase.getImag_j())) &&
+            (std::isnan(testcase.getImag_k())));
+}
+
+bool test_div_int() {
+    int num = 7;
+    qp::quaternion testcase = qObj / num;
+    return ((testcase.getReal() == (qObj.getReal())/num) &&
+            (testcase.getImag_i() == (qObj.getImag_i())/num) &&
+            (testcase.getImag_j() == (qObj.getImag_j())/num) &&
+            (testcase.getImag_k() == (qObj.getImag_k())/num));
+}
+
+bool test_div_int0() {
+    double Nan = std::nan("inf");
+    qp::quaternion testcase = qObj / 0;
+    return ((std::isnan(testcase.getReal()))   &&
+            (std::isnan(testcase.getImag_i())) &&
+            (std::isnan(testcase.getImag_j())) &&
+            (std::isnan(testcase.getImag_k())));
+}
+
+bool test_abs() {
+    return abs(qObj) == qObj.getNorm();
 }

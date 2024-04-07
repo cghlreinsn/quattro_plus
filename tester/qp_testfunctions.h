@@ -12,6 +12,8 @@ bool test_constructor_double();
 bool test_constructor_full();
 bool test_normalized();
 bool test_conjugate();
+bool test_inverse();
+bool test_inverse_by_1();
 bool test_equals();
 bool test_isequalto();
 bool test_neg();
