@@ -52,10 +52,9 @@ namespace qp {
     quaternion exp(const quaternion& pr);
     namespace rotation3d {
         void rotate_point_around(const double& angle, double& orig_x, double& orig_y, double& orig_z, const double& axis_x, const double& axis_y, const double& axis_z);
-        void rotate_point_around(double& angle, quaternion& point, const quaternion& rotator);
+        quaternion point_rotated_around(const quaternion& point, const quaternion& rotator);
     }
 
-    quaternion point_rotated_around(const quaternion& point, const quaternion& rotator);
 }
 
 #endif

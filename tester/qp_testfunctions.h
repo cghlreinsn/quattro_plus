@@ -39,5 +39,6 @@ bool test_div_int();
 bool test_div_int0();
 
 bool test_abs();
+bool test_exp();
 
 #endif

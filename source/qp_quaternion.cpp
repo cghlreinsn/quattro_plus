@@ -161,10 +161,7 @@ namespace qp {
         double theta = std::sqrt((imag_i*imag_i) + (imag_j*imag_j) + (imag_k*imag_k));
         double newreal = std::exp(real) * std::cos(theta);
         double imagcoef = (std::exp(real) / theta) * std::sin(theta);
-        double newimag_i = imagcoef * imag_i;
-        double newimag_j = imagcoef * imag_j;
-        double newimag_k = imagcoef * imag_k;
-        return quaternion(newreal, newimag_i, newimag_j, newimag_k);
+        return quaternion(newreal, imagcoef*imag_i, imagcoef*imag_j, imagcoef*imag_k);
     }
 
     namespace rotation3d {

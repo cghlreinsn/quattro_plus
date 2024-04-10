@@ -34,6 +34,7 @@ int main() {
     test_it(test_div_int(), "Integer division");
     test_it(test_div_int0(), "Integer divide by 0 NaN");
     test_it(test_abs(), "Absolute value");
+    test_it(test_exp(), "Expontential");
 
     return 0;
 }

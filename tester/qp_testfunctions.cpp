@@ -298,3 +298,25 @@ bool test_div_int0() {
 bool test_abs() {
     return abs(qObj) == qObj.getNorm();
 }
+
+bool test_exp() {
+    qp::quaternion testcase = qp::exp(qObj);
+    double real = qObj.getReal();
+    double imag_i = qObj.getImag_i();
+    double imag_j = qObj.getImag_j();
+    double imag_k = qObj.getImag_k();
+    double theta = std::sqrt((imag_i*imag_i) + (imag_j*imag_j) + (imag_k*imag_k));
+    double imagcoef = (std::exp(real) / theta) * std::sin(theta);
+    qp::quaternion expected = qp::quaternion(std::exp(real) * std::cos(theta),
+                                       imagcoef*imag_i,
+                                       imagcoef*imag_j,
+                                       imagcoef*imag_k);
+
+    // std::cout << testcase.getReal()   << ' ' << expected.getReal()   << ' ' << testcase.getReal() - expected.getReal()     << std::endl
+    //           << testcase.getImag_i() << ' ' << expected.getImag_i() << ' ' << testcase.getImag_i() - expected.getImag_i() << std::endl
+    //           << testcase.getImag_j() << ' ' << expected.getImag_j() << ' ' << testcase.getImag_j() - expected.getImag_j() << std::endl
+    //           << testcase.getImag_k() << ' ' << expected.getImag_k() << ' ' << testcase.getImag_k() - expected.getImag_k() << std::endl
+    //           << testcase.getNorm()   << ' ' << expected.getNorm()   << ' ' << testcase.getNorm() - expected.getNorm()     << std::endl;
+
+    return (testcase == expected);
+}
