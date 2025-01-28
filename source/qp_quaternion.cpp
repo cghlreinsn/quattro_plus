@@ -40,10 +40,10 @@ namespace qp {
     }
     
     bool quaternion::operator==(const quaternion& rs) const {
-        bool samereal = (m_real == rs.getReal());
-        bool same_i = (m_imag_i == rs.getImag_i());
-        bool same_j = (m_imag_j == rs.getImag_j());
-        bool same_k = (m_imag_k == rs.getImag_k());
+        bool samereal = (abs(m_real - rs.getReal()) < std::numeric_limits<double>::epsilon());
+        bool same_i = (abs(m_imag_i - rs.getImag_i()) < std::numeric_limits<double>::epsilon());
+        bool same_j = (abs(m_imag_j - rs.getImag_j()) < std::numeric_limits<double>::epsilon());
+        bool same_k = (abs(m_imag_k - rs.getImag_k()) < std::numeric_limits<double>::epsilon());
         return (samereal && same_i && same_j && same_k);
     }
 
