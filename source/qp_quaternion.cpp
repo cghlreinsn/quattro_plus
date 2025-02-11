@@ -1,4 +1,4 @@
-#include "qp_quaternion.h"
+#include "..\\include\\qp_quaternion.h"
 
 namespace qp {
     quaternion::quaternion(): m_real(0.0), m_imag_i(0.0), m_imag_j(0.0), m_imag_k(0.0) {
