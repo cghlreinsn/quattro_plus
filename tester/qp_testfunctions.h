@@ -2,7 +2,7 @@
 #define QP_TESTER_H
 
 #include <string>
-#include "..\\source\\qp_quaternion.h"
+#include "..\\include\\qp_quaternion.h"
 
 static const qp::quaternion qObj = qp::quaternion(1,1,1,1);
 
