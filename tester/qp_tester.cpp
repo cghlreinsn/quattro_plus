@@ -3,6 +3,7 @@
 #include "qp_testfunctions.h"
 
 int main() {
+    std::cout << "Beginning tests:" << std::endl;
     test_it(test_constructor_empty(), "Empty constructor");
     test_it(test_constructor_double(), "Double constructor");
     test_it(test_constructor_full(), "Full constructor");
@@ -35,6 +36,8 @@ int main() {
     test_it(test_div_int0(), "Integer divide by 0 NaN");
     test_it(test_abs(), "Absolute value");
     test_it(test_exp(), "Expontential");
+    
+    std::cin.get();
 
     return 0;
 }

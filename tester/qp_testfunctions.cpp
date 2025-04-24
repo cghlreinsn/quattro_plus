@@ -7,7 +7,7 @@ void test_it(const bool& testresult, std::string fname) {
     else {
         std::cout << "x   FAIL: ";
     }
-    std::cout << fname << " test.\n";
+    std::cout << fname << " test." << std::endl;
 }
 
 bool test_constructor_empty() {
